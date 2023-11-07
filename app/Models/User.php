@@ -39,4 +39,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Shortlink::class);
     }
+
+    public function quickResponseCodes(): HasMany
+    {
+        return $this->hasMany(QuickResponseCode::class);
+    }
 }

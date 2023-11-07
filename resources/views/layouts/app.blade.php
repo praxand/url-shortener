@@ -24,5 +24,7 @@
             <!-- Page Content -->
             <main>{{ $slot }}</main>
         </div>
+        
+        @vite('resources/js/darkMode.js')
     </body>
 </html>

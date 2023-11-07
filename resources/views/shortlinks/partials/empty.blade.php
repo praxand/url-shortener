@@ -35,12 +35,14 @@
                 class="flex shrink-0 items-center gap-3 flex-wrap justify-center mt-6"
             >
                 <span class="inline-flex">
-                    <button
-                        type="button"
-                        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                        New shortlink
-                    </button>
+                    <a href="{{ route('shortlinks.create') }}">
+                        <button
+                            type="button"
+                            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                            New shortlink
+                        </button>
+                    </a>
                 </span>
             </div>
         </div>

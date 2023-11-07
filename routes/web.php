@@ -14,9 +14,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('/shortlinks', ShortlinkController::class);
+    Route::resource('/shortlinks', ShortlinkController::class)
+        ->except('show');
 
-    Route::resource('/quick-response-codes', QuickResponseCodeController::class);
+    Route::resource('/quick-response-codes', QuickResponseCodeController::class)
+        ->except('show');
 });
 
 Route::middleware('auth')->group(function () {

@@ -21,12 +21,26 @@
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
 
-            <x-notification />
+            @if (session()->has('error'))
+                <x-notification
+                    :message="session('error')"
+                    title="Error!"
+                    type="error"
+                />
+            @endif
 
+            @if (session()->has('success'))
+                <x-notification
+                    :message="session('success')"
+                    title="Success!"
+                    type="success"
+                />
+            @endif
+                
             <!-- Page Content -->
             <main>{{ $slot }}</main>
         </div>
-        
+
         @vite('resources/js/darkMode.js')
     </body>
 </html>

@@ -100,7 +100,9 @@
                     </tbody>
                 </table>
 
-                {{ $links->links() }}
+                <div class="border-t border-gray-200 dark:border-gray-700">
+                    {{ $links->links() }}
+                </div>
             </div>
         </div>
     </div>

@@ -14,7 +14,12 @@ class ShortlinkController extends Controller
         $links = Shortlink::orderBy('updated_at', 'desc')->paginate(5);
 
         if ($links->currentPage() > $links->lastPage()) {
-            return redirect()->route('shortlinks.index');
+            return redirect()->route('shortlinks.index')
+                ->with('error', 'Page not found');
+                // q: how can i get "error" in the view?
+                // a: use session()->get('error')
+                // q: i mean just error and not the message
+                // a: use session()->has('error')
         }
 
         return view('shortlinks.index', [

@@ -17,4 +17,13 @@ class Shortlink extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function generateShortLink(): string
+    {
+        $random = substr(md5(microtime()), rand(0, 26), 5);
+
+        $url = config('app.url');
+
+        return $url . '/' . $random;
+    }
 }

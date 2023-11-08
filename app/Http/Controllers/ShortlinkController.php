@@ -9,9 +9,13 @@ use Illuminate\Http\RedirectResponse;
 
 class ShortlinkController extends Controller
 {
-    public function index(): View
+    public function index(): View|RedirectResponse
     {
         $links = Shortlink::orderBy('updated_at', 'desc')->paginate(5);
+
+        if ($links->currentPage() > $links->lastPage()) {
+            return redirect()->route('shortlinks.index');
+        }
 
         return view('shortlinks.index', [
             'links' => $links,

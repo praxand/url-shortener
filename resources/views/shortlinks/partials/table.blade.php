@@ -55,6 +55,7 @@
                                 >
                                     <a
                                         href="{{ $link->short_link }}"
+                                        target="_blank"
                                         class="text-blue-600 hover:underline"
                                         >{{ $link->short_link }}</a
                                     >
@@ -65,6 +66,7 @@
                                 >
                                     <a
                                         href="{{ $link->original_link }}"
+                                        target="_blank"
                                         class="text-blue-600 hover:underline"
                                         >{{ $link->original_link }}</a
                                     >

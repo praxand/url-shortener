@@ -6,7 +6,7 @@ use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ShortlinkController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {g
+Route::get('/', function () {
     return view('welcome');
 });
 

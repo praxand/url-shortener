@@ -72,7 +72,8 @@
                                             action="{{ route('quick-response-codes.destroy', $code) }}"
                                             method="post"
                                         >
-                                            @csrf @method('DELETE')
+                                            @csrf
+                                            @method('DELETE')
 
                                             <input
                                                 type="submit"

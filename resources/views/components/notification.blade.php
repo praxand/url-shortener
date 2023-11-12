@@ -13,9 +13,7 @@
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
     >
-        <div
-            class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
-        >
+        <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
             <div class="p-4">
                 <div class="flex items-start">
                     <div class="flex-shrink-0">
@@ -31,7 +29,7 @@
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
                                 d="{{ $draw() }}"
-                            ></path>
+                            />
                         </svg>
                     </div>
 
@@ -40,7 +38,9 @@
                             {{ $title }}
                         </p>
 
-                        <p class="mt-1 text-sm text-gray-500">{{ $message }}</p>
+                        <p class="mt-1 text-sm text-gray-500">
+                            {{ $message }}
+                        </p>
                     </div>
 
                     <div class="ml-4 flex flex-shrink-0">

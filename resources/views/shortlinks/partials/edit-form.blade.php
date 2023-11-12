@@ -1,6 +1,4 @@
-<div
-    class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg border border-gray-200 dark:border-gray-700"
->
+<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg border border-gray-200 dark:border-gray-700">
     <div class="flex items-center bg-white dark:bg-gray-800">
         <div class="w-full">
             <form action="{{ route('shortlinks.update', $shortlink) }}" method="post">
@@ -17,17 +15,20 @@
                                 name="title"
                                 id="title"
                                 class="w-full"
-                                value="{{ old('title', $shortlink->title) }}"
+                                :value="old('title', $shortlink->title)"
                             />
                         </div>
 
-                        <x-input-error class="mt-2" :messages="$errors->get('title')" />
+                        <x-input-error 
+                            class="mt-2"
+                            :messages="$errors->get('title')"
+                        />
                     </div>
 
                     <div>
-                        <x-input-label for="original_link"
-                            >Original Link</x-input-label
-                        >
+                        <x-input-label for="original_link">
+                            Original Link
+                        </x-input-label>
 
                         <div class="mt-2">
                             <x-text-input
@@ -35,31 +36,24 @@
                                 name="original_link"
                                 id="original_link"
                                 class="w-full"
-                                value="{{ old('original_link', $shortlink->original_link) }}"
+                                :value="old('original_link', $shortlink->original_link)"
                             />
                         </div>
 
-                        <x-input-error class="mt-2" :messages="$errors->get('original_link')" />
+                        <x-input-error
+                            class="mt-2"
+                            :messages="$errors->get('original_link')"
+                        />
                     </div>
 
                     <div class="space-y-2 sm:space-y-0 sm:flex sm:space-x-2">
-                        <x-primary-button
-                            class="w-full sm:w-auto justify-center"
-                        >
-                            Create
+                        <x-primary-button class="w-full sm:w-auto justify-center">
+                            Submit
                         </x-primary-button>
-
-                        <x-secondary-button
-                            class="w-full sm:w-auto justify-center"
-                        >
-                            Create & create another
-                        </x-secondary-button>
 
                         <div>
                             <a href="{{ route('shortlinks.index') }}">
-                                <x-secondary-button
-                                    class="w-full sm:w-auto justify-center"
-                                >
+                                <x-secondary-button class="w-full sm:w-auto justify-center">
                                     Cancel
                                 </x-secondary-button>
                             </a>

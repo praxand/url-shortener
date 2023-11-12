@@ -6,6 +6,7 @@ use App\Http\Requests\QuickResponseCodeRequest;
 use App\Models\QuickResponseCode;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QuickResponseCodeController extends Controller
@@ -37,7 +38,6 @@ class QuickResponseCodeController extends Controller
 
         auth()->user()->quickResponseCodes()->create($validated);
 
-        // TODO
         if ($request->action === "create") {
             return redirect()->route('quick-response-codes.index')
                 ->with('success', 'QR code created successfully.');
@@ -64,11 +64,16 @@ class QuickResponseCodeController extends Controller
             ->with('success', 'QR code updated successfully.');
     }
 
-    public function destroy(QuickResponseCode $quickResponseCode): RedirectResponse
+    public function destroy(Request $request, QuickResponseCode $quickResponseCode): RedirectResponse
     {
         $quickResponseCode->delete();
 
-        return redirect()->route('quick-response-codes.index')
-            ->with('success', 'QR code deleted successfully.');
+        if ($request->action === "delete_dashboard") {
+            return redirect()->route('dashboard')
+                ->with('success', 'QR code deleted successfully.');
+        } else {
+            return redirect()->route('quick-response-codes.index')
+                ->with('success', 'QR code deleted successfully.');
+        }
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Requests\ShortlinkRequest;
 use App\Models\Shortlink;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class ShortlinkController extends Controller
 {
@@ -36,7 +37,6 @@ class ShortlinkController extends Controller
 
         auth()->user()->shortlinks()->create($validated);
 
-        // TODO
         if ($request->action === "create") {
             return redirect()->route('shortlinks.index')
                 ->with('success', 'Shortlink created successfully.');
@@ -63,11 +63,16 @@ class ShortlinkController extends Controller
             ->with('success', 'Shortlink updated successfully');
     }
 
-    public function destroy(Shortlink $shortlink): RedirectResponse
+    public function destroy(Request $request, Shortlink $shortlink): RedirectResponse
     {
         $shortlink->delete();
 
-        return redirect()->route('shortlinks.index')
-            ->with('success', 'Shortlink deleted successfully');
+        if ($request->action === "delete_dashboard") {
+            return redirect()->route('dashboard')
+                ->with('success', 'Shortlink deleted successfully.');
+        } else {
+            return redirect()->route('shortlinks.index')
+                ->with('success', 'Shortlink deleted successfully');
+        }
     }
 }

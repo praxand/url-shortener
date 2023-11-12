@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuickResponseCodeController;
 use App\Http\Controllers\RedirectController;
@@ -11,9 +12,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', DashboardController::class)
+        ->name('dashboard');
 
     Route::resource('/shortlinks', ShortlinkController::class)
         ->except('show');

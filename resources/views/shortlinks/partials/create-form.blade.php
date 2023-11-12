@@ -47,18 +47,18 @@
 
                     <div class="space-y-2 sm:space-y-0 sm:flex sm:space-x-2">
                         <x-primary-button
-                            class="w-full sm:w-auto justify-center"
                             name="action"
                             value="create"
+                            class="w-full sm:w-auto justify-center"
                         >
                             Create
                         </x-primary-button>
 
                         <x-secondary-button
                             type="submit"
-                            class="w-full sm:w-auto justify-center"
                             name="action"
                             value="create_another"
+                            class="w-full sm:w-auto justify-center"
                         >
                             Create & create another
                         </x-secondary-button>

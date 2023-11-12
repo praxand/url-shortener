@@ -28,13 +28,13 @@
             </p>
 
             <div class="flex shrink-0 items-center gap-3 flex-wrap justify-center mt-6">
-                <span class="inline-flex">
+                <div class="inline-flex">
                     <a href="{{ route('shortlinks.create') }}">
                         <x-primary-button>
                             New shortlink
                         </x-primary-button>
                     </a>
-                </span>
+                </div>
             </div>
         </div>
     </div>

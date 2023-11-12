@@ -36,12 +36,11 @@ class ShortlinkController extends Controller
 
         auth()->user()->shortlinks()->create($validated);
 
-        // Temporary solution??
+        // TODO
         if ($request->action === "create") {
             return redirect()->route('shortlinks.index')
                 ->with('success', 'Shortlink created successfully.');
-        }
-        else {
+        } else {
             return redirect()->route('shortlinks.create')
                 ->with('success', 'Shortlink created successfully.');
         }

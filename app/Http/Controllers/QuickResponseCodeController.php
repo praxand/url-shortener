@@ -37,8 +37,14 @@ class QuickResponseCodeController extends Controller
 
         auth()->user()->quickResponseCodes()->create($validated);
 
-        return redirect()->route('quick-response-codes.index')
-            ->with('success', 'QR code created successfully.');
+        // TODO
+        if ($request->action === "create") {
+            return redirect()->route('quick-response-codes.index')
+                ->with('success', 'QR code created successfully.');
+        } else {
+            return redirect()->route('quick-response-codes.create')
+                ->with('success', 'QR code created successfully.');
+        }
     }
 
     public function edit(QuickResponseCode $quickResponseCode): View

@@ -10,9 +10,7 @@
                     </h2>
 
                     <a href="{{ route('quick-response-codes.create') }}">
-                        <x-primary-button>
-                            New QR Code
-                        </x-primary-button>
+                        <x-primary-button> New QR Code </x-primary-button>
                     </a>
                 </div>
 

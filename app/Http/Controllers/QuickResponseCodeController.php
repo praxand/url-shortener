@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\QuickResponseCodeRequest;
 use App\Models\QuickResponseCode;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QuickResponseCodeController extends Controller
 {
     public function index(): View
     {
-        $codes = QuickResponseCode::orderBy('updated_at', 'desc')->paginate(5);
+        $codes = QuickResponseCode::orderBy('updated_at', 'desc')->paginate(3);
 
         if ($codes->currentPage() > $codes->lastPage()) {
             return redirect()->route('quick-response-codes.index')
@@ -29,46 +29,40 @@ class QuickResponseCodeController extends Controller
         return view('quick-response-codes.create');
     }
 
-    public function store(QuickResponseCodeRequest $request)
+    public function store(QuickResponseCodeRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
-        $a = base64_encode(QrCode::format('png')->generate($validated['original_link']));
-        dd($a);
+        $validated['base64'] = base64_encode(QrCode::format('png')->generate($validated['original_link']));
+
+        auth()->user()->quickResponseCodes()->create($validated);
 
         return redirect()->route('quick-response-codes.index')
             ->with('success', 'QR code created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(QuickResponseCode $quickResponseCode)
+    public function edit(QuickResponseCode $quickResponseCode): View
     {
-        //
+        return view('quick-response-codes.edit', [
+            'code' => $quickResponseCode,
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(QuickResponseCode $quickResponseCode)
+    public function update(QuickResponseCodeRequest $request, QuickResponseCode $quickResponseCode): RedirectResponse
     {
-        //
+        $validated = $request->validated();
+
+        $quickResponseCode->update($validated);
+
+        return redirect()->route('quick-response-codes.index')
+            ->with('success', 'QR code updated successfully.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, QuickResponseCode $quickResponseCode)
+    public function destroy(QuickResponseCode $quickResponseCode): RedirectResponse
     {
-        //
-    }
+        $quickResponseCode->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(QuickResponseCode $quickResponseCode)
-    {
-        //
+        return redirect()->route('quick-response-codes.index')
+            ->with('success', 'QR code deleted successfully.');
     }
 }

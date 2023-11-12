@@ -1,6 +1,4 @@
-<div
-    class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg border border-gray-200 dark:border-gray-700"
->
+<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg border border-gray-200 dark:border-gray-700">
     <div class="flex items-center bg-white dark:bg-gray-800 h-64">
         <div class="mx-auto grid max-w-lg justify-items-center text-center">
             <div class="mb-4 rounded-full bg-gray-100 p-3 dark:bg-gray-500/20">
@@ -17,13 +15,11 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         d="M6 18L18 6M6 6l12 12"
-                    ></path>
+                    />
                 </svg>
             </div>
 
-            <h4
-                class="text-base font-semibold leading-6 text-gray-950 dark:text-white"
-            >
+            <h4 class="text-base font-semibold leading-6 text-gray-950 dark:text-white">
                 No QR Codes
             </h4>
 
@@ -31,14 +27,10 @@
                 Create a QR Code to get started.
             </p>
 
-            <div
-                class="flex shrink-0 items-center gap-3 flex-wrap justify-center mt-6"
-            >
+            <div class="flex shrink-0 items-center gap-3 flex-wrap justify-center mt-6">
                 <span class="inline-flex">
                     <a href="{{ route('quick-response-codes.create') }}">
-                        <x-primary-button>
-                            New QR Code
-                        </x-primary-button>
+                        <x-primary-button> New QR Code </x-primary-button>
                     </a>
                 </span>
             </div>

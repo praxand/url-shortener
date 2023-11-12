@@ -11,7 +11,9 @@ return new class extends Migration
         Schema::create('quick_response_codes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            // TODO
+            $table->string('title');
+            $table->string('original_link');
+            $table->longText('base64');
             $table->timestamps();
         });
     }

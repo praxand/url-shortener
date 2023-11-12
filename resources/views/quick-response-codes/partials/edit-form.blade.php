@@ -2,10 +2,11 @@
     <div class="flex items-center bg-white dark:bg-gray-800">
         <div class="w-full">
             <form
-                action="{{ route('quick-response-codes.store') }}"
+                action="{{ route('quick-response-codes.update', $code) }}"
                 method="post"
             >
                 @csrf
+                @method('PUT')
 
                 <div class="grid grid-cols-1 space-y-4 p-4">
                     <div>
@@ -19,7 +20,7 @@
                                 name="title"
                                 id="title"
                                 class="w-full"
-                                :value="old('title')"
+                                :value="old('title', $code->title)"
                             />
                         </div>
 
@@ -40,7 +41,7 @@
                                 name="original_link"
                                 id="original_link"
                                 class="w-full"
-                                :value="old('original_link')"
+                                :value="old('original_link', $code->original_link)"
                             />
                         </div>
 
@@ -51,22 +52,9 @@
                     </div>
 
                     <div class="space-y-2 sm:space-y-0 sm:flex sm:space-x-2">
-                        <x-primary-button
-                            class="w-full sm:w-auto justify-center"
-                            name="action"
-                            value="create"
-                        >
-                            Create
+                        <x-primary-button class="w-full sm:w-auto justify-center">
+                            Submit
                         </x-primary-button>
-
-                        <x-secondary-button
-                            type="submit"
-                            class="w-full sm:w-auto justify-center"
-                            name="action"
-                            value="create_another"
-                        >
-                            Create & create another
-                        </x-secondary-button>
 
                         <div>
                             <a href="{{ route('quick-response-codes.index') }}">

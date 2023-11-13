@@ -13,7 +13,7 @@ class QuickResponseCodeController extends Controller
 {
     public function index(): View
     {
-        $codes = QuickResponseCode::orderBy('updated_at', 'desc')->paginate(3);
+        $codes = auth()->user()->quickResponseCodes()->orderBy('updated_at', 'desc')->paginate(3);
 
         if ($codes->currentPage() > $codes->lastPage()) {
             return redirect()->route('quick-response-codes.index')

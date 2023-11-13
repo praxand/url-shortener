@@ -12,7 +12,7 @@ class ShortlinkController extends Controller
 {
     public function index(): View|RedirectResponse
     {
-        $links = Shortlink::orderBy('updated_at', 'desc')->paginate(5);
+        $links = auth()->user()->shortlinks()->orderBy('updated_at', 'desc')->paginate(5);
 
         if ($links->currentPage() > $links->lastPage()) {
             return redirect()->route('shortlinks.index')

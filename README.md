@@ -90,12 +90,15 @@ php artisan serve
 
 Just create an account and start shortening your URLs now and simplify link sharing!
 
-## ⛏️ Built Using <a name = "built_using"></a>
+## ⛏️ Built Using <a name="built_using"></a>
 
 -   [Laravel](https://laravel.com/) - Web Framework
+-   [Filament](https://filamentphp.com/) - Content Management Framework
+-   [Tailwind CSS](https://tailwindcss.com/) - CSS Framework
+-   [Alpine JS](https://alpinejs.dev/) - Javascript Framework
 -   [MySQL](https://www.mysql.com/) - Database
 
-## ✍️ Authors <a name= "authors"></a>
+## ✍️ Authors <a name="authors"></a>
 
 -   [@praxand](https://github.com/praxand) - Idea & Initial work
 

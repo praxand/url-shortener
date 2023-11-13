@@ -95,7 +95,8 @@ Just create an account and start shortening your URLs now and simplify link shar
 -   [Laravel](https://laravel.com/) - Web Framework
 -   [Filament](https://filamentphp.com/) - Content Management Framework
 -   [Tailwind CSS](https://tailwindcss.com/) - CSS Framework
--   [Alpine JS](https://alpinejs.dev/) - Javascript Framework
+-   [Alpine JS](https://alpinejs.dev/) - JavaScript Framework
+-   [Livewire](https://livewire.laravel.com/) - Full-stack Framework for Laravel
 -   [MySQL](https://www.mysql.com/) - Database
 
 ## ✍️ Authors <a name="authors"></a>

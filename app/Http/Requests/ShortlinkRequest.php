@@ -11,6 +11,7 @@ class ShortlinkRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'original_link' => 'required|url',
+            'password' => 'nullable|string|min:8|max:255',
         ];
     }
 }

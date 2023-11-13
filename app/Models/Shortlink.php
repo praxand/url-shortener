@@ -11,6 +11,15 @@ class Shortlink extends Model
         'title',
         'original_link',
         'short_link',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
+
+    protected $casts = [
+        'password' => 'hashed',
     ];
 
     public function user(): BelongsTo

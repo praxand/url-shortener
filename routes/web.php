@@ -30,5 +30,11 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/{shortlink}', RedirectController::class)
-    ->name('shortlink.redirect');
+Route::get('/{shortlink}/password', [RedirectController::class, 'password'])
+    ->name('shortlinks.password');
+
+Route::post('/{shortlink}/password', [RedirectController::class, 'confirm'])
+    ->name('shortlinks.confirm');
+
+Route::get('/{shortlink}', [RedirectController::class, 'redirect'])
+    ->name('shortlinks.redirect');

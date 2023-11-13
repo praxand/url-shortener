@@ -19,8 +19,8 @@
                         </div>
 
                         <x-input-error
-                            class="mt-2"
                             :messages="$errors->get('title')"
+                            class="mt-2"
                         />
                     </div>
 
@@ -40,8 +40,28 @@
                         </div>
 
                         <x-input-error
-                            class="mt-2"
                             :messages="$errors->get('original_link')"
+                            class="mt-2"
+                        />
+                    </div>
+
+                    <div>
+                        <x-input-label for="password">
+                            Password
+                        </x-input-label>
+            
+                        <div class="mt-2">
+                            <x-text-input
+                                type="password"
+                                name="password"
+                                id="password"
+                                class="block mt-1 w-full"
+                            />
+                        </div>
+            
+                        <x-input-error
+                            :messages="$errors->get('password')"
+                            class="mt-2"
                         />
                     </div>
 

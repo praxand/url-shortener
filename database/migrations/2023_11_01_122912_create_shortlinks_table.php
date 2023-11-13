@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('original_link');
             $table->string('short_link')->unique();
+            $table->string('password')->nullable();
             $table->timestamps();
         });
     }

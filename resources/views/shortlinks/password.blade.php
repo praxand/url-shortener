@@ -31,7 +31,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <x-primary-button class="ml-3">
+            <x-primary-button class="sm:ml-3 w-full flex justify-center sm:w-auto">
                 Submit
             </x-primary-button>
         </div>

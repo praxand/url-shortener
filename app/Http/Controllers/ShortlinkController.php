@@ -59,7 +59,7 @@ class ShortlinkController extends Controller
 
         $shortlink->update($validated);
 
-        return redirect()->route('shortlinks.index')
+        return redirect()->route('shortlinks.edit', $shortlink)
             ->with('success', 'Shortlink updated successfully');
     }
 

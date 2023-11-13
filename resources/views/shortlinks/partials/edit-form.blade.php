@@ -6,9 +6,11 @@
                     @csrf
                     @method('PUT')
     
-                    <div class="grid grid-cols-1 space-y-4 p-4">
-                        <div>
-                            <x-input-label for="title">Title</x-input-label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+                        <div class="sm:col-span-2">
+                            <x-input-label for="title">
+                                Title <span class="text-red-500">*</span>
+                            </x-input-label>
     
                             <div class="mt-2">
                                 <x-text-input
@@ -21,14 +23,14 @@
                             </div>
     
                             <x-input-error 
-                                class="mt-2"
                                 :messages="$errors->get('title')"
+                                class="mt-2"
                             />
                         </div>
     
-                        <div>
+                        <div class="sm:col-span-2">
                             <x-input-label for="original_link">
-                                Original Link
+                                Original Link <span class="text-red-500">*</span>
                             </x-input-label>
     
                             <div class="mt-2">
@@ -42,12 +44,12 @@
                             </div>
     
                             <x-input-error
-                                class="mt-2"
                                 :messages="$errors->get('original_link')"
+                                class="mt-2"
                             />
                         </div>
     
-                        <div>
+                        <div class="col-span-1">
                             <x-input-label for="password">
                                 Password
                             </x-input-label>
@@ -63,6 +65,27 @@
                 
                             <x-input-error
                                 :messages="$errors->get('password')"
+                                class="mt-2"
+                            />
+                        </div>
+
+                        <div class="col-span-1">
+                            <x-input-label for="expires_at">
+                                Expiration Date
+                            </x-input-label>
+    
+                            <div class="mt-2">
+                                <x-text-input
+                                    type="datetime-local"
+                                    name="expires_at"
+                                    id="expires_at"
+                                    class="w-full dark:[color-scheme:dark]"
+                                    :value="old('expires_at', $shortlink->expires_at ? $shortlink->expires_at->format('Y-m-d\TH:i') : null)"
+                                />
+                            </div>
+    
+                            <x-input-error
+                                :messages="$errors->get('expires_at')"
                                 class="mt-2"
                             />
                         </div>
@@ -101,6 +124,14 @@
         
                         {{ $shortlink->updated_at->diffForHumans() }}
                     </div>
+
+                    @if ($shortlink->expires_at)
+                        <div class="p-4 text-gray-900 dark:text-gray-200">
+                            <p>Expires at</p>
+            
+                            {{ $shortlink->expires_at->diffForHumans() }}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

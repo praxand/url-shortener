@@ -60,7 +60,7 @@ class QuickResponseCodeController extends Controller
 
         $quickResponseCode->update($validated);
 
-        return redirect()->route('quick-response-codes.index')
+        return redirect()->route('quick-response-codes.edit', $quickResponseCode)
             ->with('success', 'QR code updated successfully.');
     }
 

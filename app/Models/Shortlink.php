@@ -12,6 +12,7 @@ class Shortlink extends Model
         'original_link',
         'short_link',
         'password',
+        'expires_at',
     ];
 
     protected $hidden = [
@@ -20,6 +21,7 @@ class Shortlink extends Model
 
     protected $casts = [
         'password' => 'hashed',
+        'expires_at' => 'datetime',
     ];
 
     public function user(): BelongsTo

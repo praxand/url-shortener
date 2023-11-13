@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('original_link');
             $table->longText('base64');
+            $table->timestamp('expires_at')->nullable();
             $table->timestamps();
         });
     }

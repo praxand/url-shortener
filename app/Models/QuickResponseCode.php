@@ -11,6 +11,11 @@ class QuickResponseCode extends Model
         'title',
         'original_link',
         'base64',
+        'expires_at',
+    ];
+
+    protected $casts = [
+        'expires_at' => 'datetime',
     ];
 
     public function user(): BelongsTo

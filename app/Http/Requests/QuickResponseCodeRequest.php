@@ -11,6 +11,7 @@ class QuickResponseCodeRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'original_link' => 'required|url',
+            'expires_at' => 'nullable|date',
         ];
     }
 }

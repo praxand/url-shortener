@@ -10,7 +10,7 @@
                 <div class="grid grid-cols-1 space-y-4 p-4">
                     <div>
                         <x-input-label for="title">
-                            Title
+                            Title <span class="text-red-500">*</span>
                         </x-input-label>
 
                         <div class="mt-2">
@@ -24,14 +24,14 @@
                         </div>
 
                         <x-input-error
-                            class="mt-2"
                             :messages="$errors->get('title')"
+                            class="mt-2"
                         />
                     </div>
 
                     <div>
                         <x-input-label for="original_link">
-                            Original Link
+                            Original Link <span class="text-red-500">*</span>
                         </x-input-label>
 
                         <div class="mt-2">
@@ -45,8 +45,29 @@
                         </div>
 
                         <x-input-error
-                            class="mt-2"
                             :messages="$errors->get('original_link')"
+                            class="mt-2"
+                        />
+                    </div>
+
+                    <div>
+                        <x-input-label for="expires_at">
+                            Expiration Date
+                        </x-input-label>
+
+                        <div class="mt-2">
+                            <x-text-input
+                                type="datetime-local"
+                                name="expires_at"
+                                id="expires_at"
+                                class="w-full dark:[color-scheme:dark]"
+                                :value="old('expires_at')"
+                            />
+                        </div>
+
+                        <x-input-error
+                            :messages="$errors->get('expires_at')"
+                            class="mt-2"
                         />
                     </div>
 

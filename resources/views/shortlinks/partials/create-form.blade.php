@@ -4,9 +4,11 @@
             <form action="{{ route('shortlinks.store') }}" method="post">
                 @csrf
 
-                <div class="grid grid-cols-1 space-y-4 p-4">
-                    <div>
-                        <x-input-label for="title">Title</x-input-label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+                    <div class="sm:col-span-2">
+                        <x-input-label for="title">
+                            Title <span class="text-red-500">*</span>
+                        </x-input-label>
 
                         <div class="mt-2">
                             <x-text-input
@@ -24,9 +26,9 @@
                         />
                     </div>
 
-                    <div>
+                    <div class="sm:col-span-2">
                         <x-input-label for="original_link">
-                            Original Link
+                            Original Link <span class="text-red-500">*</span>
                         </x-input-label>
 
                         <div class="mt-2">
@@ -45,7 +47,7 @@
                         />
                     </div>
 
-                    <div>
+                    <div class="col-span-1">
                         <x-input-label for="password">
                             Password
                         </x-input-label>
@@ -65,7 +67,28 @@
                         />
                     </div>
 
-                    <div class="space-y-2 sm:space-y-0 sm:flex sm:space-x-2">
+                    <div class="col-span-1">
+                        <x-input-label for="expires_at">
+                            Expiration Date
+                        </x-input-label>
+
+                        <div class="mt-2">
+                            <x-text-input
+                                type="datetime-local"
+                                name="expires_at"
+                                id="expires_at"
+                                class="w-full dark:[color-scheme:dark]"
+                                :value="old('expires_at')"
+                            />
+                        </div>
+
+                        <x-input-error
+                            :messages="$errors->get('expires_at')"
+                            class="mt-2"
+                        />
+                    </div>
+
+                    <div class="sm:col-span-2 space-y-2 sm:space-y-0 sm:flex sm:space-x-2">
                         <x-primary-button
                             name="action"
                             value="create"

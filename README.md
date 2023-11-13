@@ -58,26 +58,33 @@ https://imagemagick.org/script/download.php#windows
 install imagick (linux)
 ```
 sudo apt install php-imagick
-
 ```
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running.
 
-Say what the step will be
-
+Create an env
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+cp .env.example .env
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+Generate a project key
+```
+php artisan key:generate
+```
+
+Run the development server
+```
+npm run dev
+```
+
+If you are developing on macOS I assume you are using [Laravel Valet](https://laravel.com/docs/10.x/valet) so you can just go to http://url-shortener.test
+
+If not use the following command
+```
+php artisan serve
+```
 
 ## 🎈 Usage <a name="usage"></a>
 

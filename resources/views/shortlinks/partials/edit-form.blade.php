@@ -46,6 +46,26 @@
                         />
                     </div>
 
+                    <div>
+                        <x-input-label for="password">
+                            Password
+                        </x-input-label>
+            
+                        <div class="mt-2">
+                            <x-text-input
+                                type="password"
+                                name="password"
+                                id="password"
+                                class="block mt-1 w-full"
+                            />
+                        </div>
+            
+                        <x-input-error
+                            :messages="$errors->get('password')"
+                            class="mt-2"
+                        />
+                    </div>
+
                     <div class="space-y-2 sm:space-y-0 sm:flex sm:space-x-2">
                         <x-primary-button class="w-full sm:w-auto justify-center">
                             Submit

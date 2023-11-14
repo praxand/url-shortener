@@ -5,11 +5,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuickResponseCodeController;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ShortlinkController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', WelcomeController::class)
+    ->name('welcome');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', DashboardController::class)
@@ -30,11 +30,11 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/{shortlink}/password', [RedirectController::class, 'password'])
+Route::get('/{shortlink:alias}/password', [RedirectController::class, 'password'])
     ->name('shortlinks.password');
 
-Route::post('/{shortlink}/password', [RedirectController::class, 'confirm'])
+Route::post('/{shortlink:alias}/password', [RedirectController::class, 'confirm'])
     ->name('shortlinks.confirm');
 
-Route::get('/{shortlink}', [RedirectController::class, 'redirect'])
+Route::get('/{shortlink:alias}', [RedirectController::class, 'redirect'])
     ->name('shortlinks.redirect');

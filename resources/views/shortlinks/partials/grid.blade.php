@@ -64,11 +64,11 @@
 
                     <dd class="text-gray-900 dark:text-gray-100">
                         <a
-                            href="{{ $link->short_link }}"
+                            href="{{ $link->url() }}"
                             target="_blank"
                             class="text-blue-600 hover:underline"
                         >
-                            {{ $link->short_link }}
+                            {{ $link->url() }}
                         </a>
                     </dd>
                 </div>

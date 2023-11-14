@@ -10,7 +10,7 @@ class Shortlink extends Model
     protected $fillable = [
         'title',
         'original_link',
-        'short_link',
+        'alias',
         'password',
         'expires_at',
     ];
@@ -29,12 +29,15 @@ class Shortlink extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function generateShortLink(): string
+    public static function generateShortLink($custom = null): string
     {
-        $random = substr(md5(microtime()), rand(0, 26), 5);
+        $alias = $custom ?? substr(md5(microtime()), rand(0, 26), 5);
 
-        $url = config('app.url');
+        return $alias;
+    }
 
-        return $url . '/' . $random;
+    public function url(): string
+    {
+        return config('app.url') . '/' . $this->alias;
     }
 }

@@ -35,7 +35,7 @@
                         x-transition:leave-end="transform opacity-0 scale-95"
                     >
                         <a
-                            @if ($latest->short_link)
+                            @if ($latest->alias)
                                 href="{{ route('shortlinks.edit', $latest) }}"
                             @else
                                 href="{{ route('quick-response-codes.edit', $latest) }}"
@@ -46,7 +46,7 @@
                         </a>
 
                         <form
-                            @if ($latest->short_link)
+                            @if ($latest->alias)
                                 action="{{ route('shortlinks.destroy', $latest) }}"
                             @else
                                 action="{{ route('quick-response-codes.destroy', $latest) }}"
@@ -71,13 +71,13 @@
                     <dt class="text-gray-500 dark:text-gray-400">New URL</dt>
 
                     <dd class="text-gray-900 dark:text-gray-100">
-                        @if ($latest->short_link)
+                        @if ($latest->alias)
                             <a
-                                href="{{ $latest->short_link }}"
+                                href="{{ $latest->alias }}"
                                 target="_blank"
                                 class="text-blue-600 hover:underline"
                             >
-                                {{ $latest->short_link }}
+                                {{ $latest->alias }}
                             </a>
                         @else
                             <img

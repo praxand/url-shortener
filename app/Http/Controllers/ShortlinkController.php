@@ -33,7 +33,11 @@ class ShortlinkController extends Controller
     {
         $validated = $request->validated();
 
-        $validated['short_link'] = Shortlink::generateShortLink();
+        if ($validated['alias']) {
+            $validated['alias'] = Shortlink::generateShortLink($validated['alias']);
+        } else {
+            $validated['alias'] = Shortlink::generateShortLink();
+        }
 
         auth()->user()->shortlinks()->create($validated);
 

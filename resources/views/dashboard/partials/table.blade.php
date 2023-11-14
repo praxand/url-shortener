@@ -43,13 +43,13 @@
                                 </td>
 
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                    @if ($latest->short_link)
+                                    @if ($latest->alias)
                                         <a
-                                            href="{{ $latest->short_link }}"
+                                            href="{{ $latest->url() }}"
                                             target="_blank"
                                             class="text-blue-600 hover:underline"
                                         >
-                                            {{ $latest->short_link }}
+                                            {{ $latest->url() }}
                                         </a>
                                     @else
                                         <img
@@ -72,7 +72,7 @@
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                     <div class="space-x-4 inline-flex">
                                         <a
-                                            @if ($latest->short_link)
+                                            @if ($latest->alias)
                                                 href="{{ route('shortlinks.edit', $latest) }}"
                                             @else
                                                 href="{{ route('quick-response-codes.edit', $latest) }}"
@@ -83,7 +83,7 @@
                                         </a>
 
                                         <form
-                                            @if ($latest->short_link)
+                                            @if ($latest->alias)
                                                 action="{{ route('shortlinks.destroy', $latest) }}"
                                             @else
                                                 action="{{ route('quick-response-codes.destroy', $latest) }}"

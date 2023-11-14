@@ -6,28 +6,21 @@ use App\Http\Requests\RedirectRequest;
 use App\Models\Shortlink;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class RedirectController extends Controller
 {
-    public function redirect(Request $request): RedirectResponse
+    public function redirect(Shortlink $shortlink): RedirectResponse
     {
-        $link = Shortlink::where('short_link', $request->url())->firstOrFail();
-
-        if ($link->password) {
-            return redirect()->route('shortlinks.password', $request->path());
+        if ($shortlink->password) {
+            return redirect()->route('shortlinks.password', $shortlink->alias);
         }
 
-        return redirect()->away($link->original_link);
+        return redirect()->away($shortlink->original_link);
     }
 
-    public function password($link): View
+    public function password(Shortlink $shortlink): View
     {
-        $url = config('app.url') . '/' . $link;
-
-        $shortlink = Shortlink::where('short_link', $url)->firstOrFail();
-
         return view('shortlinks.password', [
             'shortlink' => $shortlink,
         ]);
@@ -39,9 +32,7 @@ class RedirectController extends Controller
             return redirect()->away($shortlink->original_link);
         }
 
-        $code = explode('/', $shortlink->short_link)[3];
-
-        return redirect()->route('shortlinks.password', $code)
+        return redirect()->route('shortlinks.password', $shortlink->alias)
             ->with('error', 'Password is incorrect.');
     }
 }

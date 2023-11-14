@@ -44,11 +44,11 @@
 
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-300">
                                     <a
-                                        href="{{ $link->short_link }}"
+                                        href="{{ $link->url() }}"
                                         target="_blank"
                                         class="text-blue-600 hover:underline"
                                     >
-                                        {{ $link->short_link }}
+                                        {{ $link->url() }}
                                     </a>
                                 </td>
 

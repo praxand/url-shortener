@@ -47,6 +47,27 @@
                         />
                     </div>
 
+                    <div class="sm:col-span-2">
+                        <x-input-label for="alias">
+                            Alias
+                        </x-input-label>
+
+                        <div class="mt-2">
+                            <x-text-input
+                                type="text"
+                                name="alias"
+                                id="alias"
+                                class="w-full"
+                                :value="old('alias')"
+                            />
+                        </div>
+
+                        <x-input-error
+                            :messages="$errors->get('alias')"
+                            class="mt-2"
+                        />
+                    </div>
+
                     <div class="col-span-1">
                         <x-input-label for="password">
                             Password

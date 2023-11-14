@@ -12,7 +12,7 @@ class ShortlinkFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'original_link' => $this->faker->url,
-            'short_link' => Shortlink::generateShortLink(),
+            'alias' => Shortlink::generateShortLink(),
         ];
     }
 }

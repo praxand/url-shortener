@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->string('original_link');
-            $table->string('short_link')->unique();
+            $table->string('alias')->unique();
             $table->string('password')->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
